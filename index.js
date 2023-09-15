@@ -1,17 +1,17 @@
 const topicField = document.getElementById("topic");
-console.log(topicField)
 
 const searchNews = () => {
     const topic = topicField.value;
-    console.log(topic)
     const url = `https://newsapi.org/v2/everything?q=${topic}&apiKey=f045e7788f4941b6884a5994d9f5433d`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayNews(data.articles))
-
+        .catch(err => alert("Error Occured! Please try again later!"))
 }
 
-const displayNews = (news) =>{
+
+
+const displayNews = (news=[]) =>{
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
     news.forEach(news => {
